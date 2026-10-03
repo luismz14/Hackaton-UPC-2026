@@ -186,7 +186,7 @@ The implementation combines deterministic component models, synthetic histories,
 - The frontend intentionally disables and ignores `package-lock.json`; exact transitive dependency recreation is not guaranteed.
 - Vite historically serves `3d-models/` through `publicDir`. All nine external GLBs are excluded for unresolved authorship/license. The 3D view requires separately supplied authorized local assets and can be incomplete without them; no redesign was implemented.
 - Ollama-backed features require a running local service and the configured model; the agent panel also supports the documented mock provider.
-- No source-code license is included. [DATA_ASSETS.md](DATA_ASSETS.md) distinguishes synthetic fixtures, authored illustrations and excluded third-party material.
+- Repository-authored source code is licensed under [MIT](LICENSE). Third-party data/assets, upstream libraries, submodules and external models retain their own terms; MIT does not relicense them. [DATA_ASSETS.md](DATA_ASSETS.md) distinguishes synthetic fixtures, authored illustrations and excluded third-party material.
 
 ## Future Improvements
 

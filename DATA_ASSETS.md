@@ -1,6 +1,6 @@
 # Data and asset provenance
 
-Publication review: 2026-10-03. No project source license is selected here.
+Publication review: 2026-10-03. Repository-authored source code uses [MIT](LICENSE); third-party data, assets, libraries, submodules and models retain their own terms.
 
 ## Authored simulation material
 
