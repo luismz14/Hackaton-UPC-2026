@@ -3,7 +3,6 @@
 import math
 
 from .common import (
-    DAMAGE_PRECISION,
     HEALTH_PRECISION,
     clamp,
     get_component_config,

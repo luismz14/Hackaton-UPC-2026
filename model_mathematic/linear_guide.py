@@ -1,7 +1,6 @@
 """Linear Guide degradation model for the recoating system."""
 
 from .common import (
-    DAMAGE_PRECISION,
     HEALTH_PRECISION,
     clamp,
     get_component_config,

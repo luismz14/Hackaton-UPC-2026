@@ -216,6 +216,3 @@ def extract_context(messages: list[dict[str, str]]) -> dict[str, Any]:
             return json.loads(message["content"])
 
     raise ValueError("No user message found in LLM messages")
-
-    def rewrite(self, source_text: str) -> str:
-        return source_text

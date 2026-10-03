@@ -8,6 +8,9 @@ from agent.src.schemas import Forecast
 def forecast_from_health_trend(history: list[dict], component_id: str, horizon_steps: int) -> Forecast:
     """Forecast component status from the observed average health trend.
 
+    The trend treats records as equally spaced steps; timestamps and usage
+    intervals are not used to estimate the slope.
+
     @param history: Ordered historian records.
     @param component_id: Component identifier to forecast.
     @param horizon_steps: Number of future steps to project.

@@ -207,7 +207,6 @@ export default function App() {
   const overallHealth = Math.round((displayModelState?.machine_state?.overall_health || 0) * 100);
   const activeRunId = historianState.latestRun?.run_id || 'No run';
   const currentStatus = displayModelState?.machine_state?.overall_status || 'UNKNOWN';
-  const storedRuns = historianState.runs.length;
   const hasSimulationRun = timeline.length > 0;
 
   /**
@@ -707,37 +706,9 @@ function LogoMark() {
   );
 }
 
-function GridIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z" />
-    </svg>
-  );
-}
 
-function CubeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m12 3 8 4.4v9.2L12 21l-8-4.4V7.4L12 3Zm0 2.3L6.2 8.1 12 11.4l5.8-3.3L12 5.3ZM5.5 9.6V15l5.5 3v-5.5l-5.5-2.9Zm13 0-5.5 3V18l5.5-3v-5.4Z" />
-    </svg>
-  );
-}
 
-function ChartIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4 19.5V5h1.8v12.7H20V19.5H4Zm3.2-4.8 3.3-4.1 3.1 2.4 4.7-6.3 1.5 1.1-5.9 8-3.1-2.4-2.6 3.2-1-1.9Z" />
-    </svg>
-  );
-}
 
-function NetworkIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7 5.5A2.5 2.5 0 1 1 12 5.5 2.5 2.5 0 0 1 7 5.5Zm8 3A2.5 2.5 0 1 1 20 8.5 2.5 2.5 0 0 1 15 8.5Zm-6 8A2.5 2.5 0 1 1 14 16.5 2.5 2.5 0 0 1 9 16.5Zm-3.8-7.2 2.6 1.7m8.4-3.3 1.3 2.8M10 14l4.4-3.1" />
-    </svg>
-  );
-}
 
 function ChatIcon() {
   return (
@@ -747,29 +718,8 @@ function ChatIcon() {
   );
 }
 
-function GearIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m12 7.1 1.1-2 2.2.8.3 2.2 1.9 1.1 2-1.1 1.6 1.7-1 2.1.8 2.1 2.2.5v2.4l-2.2.5-.8 2.1 1 2.1-1.6 1.7-2-1.1-1.9 1.1-.3 2.2-2.2.8-1.1-2-2.1-.1-1.1 2-2.2-.8-.3-2.2-1.9-1.1-2 1.1-1.6-1.7 1-2.1-.8-2.1-2.2-.5v-2.4l2.2-.5.8-2.1-1-2.1 1.6-1.7 2 1.1 1.9-1.1.3-2.2 2.2-.8 1.1 2 2.1.1Zm0 3.5A1.9 1.9 0 1 0 12 15.5 1.9 1.9 0 0 0 12 10.6Z" />
-    </svg>
-  );
-}
 
-function MoonIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M18.6 15.7A8.5 8.5 0 0 1 8.3 5.4 8.2 8.2 0 1 0 18.6 15.7Z" />
-    </svg>
-  );
-}
 
-function ChevronDownIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m6.5 9 5.5 5.5L17.5 9l1.4 1.4L12 17.3 5.1 10.4 6.5 9Z" />
-    </svg>
-  );
-}
 
 function CloseIcon() {
   return (
@@ -779,22 +729,7 @@ function CloseIcon() {
   );
 }
 
-function RailButton({ label, icon, active = false }) {
-  return (
-    <button type="button" className={`rail-button ${active ? 'active' : ''}`} aria-label={label}>
-      {icon}
-    </button>
-  );
-}
 
-function Badge({ label, value, tone = 'blue' }) {
-  return (
-    <div className={`badge badge-${tone}`}>
-      <span>{label}</span>
-      <strong>{value}</strong>
-    </div>
-  );
-}
 
 function MiniStat({ label, value, helper, tone = 'blue' }) {
   return (

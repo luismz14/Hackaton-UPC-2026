@@ -11,7 +11,7 @@ The solution is organized as a modular system with a clear separation between si
 - `agent/`: agent logic and scripts used to support interaction, orchestration, and scenario handling.
 - `model_mathematic/`: mathematical models for each subsystem and component degradation behavior.
 - `data/`: synthetic histories, example contexts, and agent scenarios used to test the system.
-- `docs/`, `config/`, `tests/`, and `3d-models/`: supporting material, configuration, validation, and visualization assets.
+- `docs/`, `config/`, and `tests/`: authored documentation, simulation figures, configuration and validation. External GLBs and supplied briefs are excluded; see [DATA_ASSETS.md](DATA_ASSETS.md).
 
 At a high level, the repository follows the three hackathon phases: `model_mathematic/` implements the Phase 1 degradation models, `backend/` executes the Phase 2 simulation and historian workflow, and `agent/` plus `frontend/` provide the Phase 3 interaction and decision-support layers. The mathematical models generate the health and degradation behavior of each subsystem, the backend coordinates predictions and storage, and the frontend presents the results through dashboards and timelines.
 
@@ -24,7 +24,7 @@ Install the following tools before running the project:
 - Git, if you are cloning the repository.
 - Optional: Ollama, if you want to use the local LLM explanation flow instead of the mock LLM provider.
 
-The backend reads environment variables from the repository root `.env` file. For the local Ollama-backed flows, use:
+The backend currently reads environment variables from `backend/.env`. Start commands below from the repository root unless a `cd` command specifies otherwise. For the local Ollama-backed flows, use:
 
 ```env
 OLLAMA_BASE_URL=http://localhost:11434
@@ -71,11 +71,10 @@ source .venv/bin/activate
 Install the backend dependencies:
 
 ```bash
-python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-Install the frontend dependencies from a second terminal:
+Install the frontend dependencies from a second terminal opened at the repository root:
 
 ```bash
 cd frontend
@@ -96,7 +95,7 @@ The backend will be available at:
 - API health check: `http://localhost:8000/api/health`
 - Interactive API documentation: `http://localhost:8000/docs`
 
-Start the frontend dashboard from another terminal:
+Start the frontend dashboard from another terminal opened at the repository root:
 
 ```bash
 cd frontend
@@ -127,7 +126,7 @@ Run the automated tests from the repository root:
 
 ```bash
 python -m pip install pytest
-python -m pytest
+python -m pytest tests
 ```
 
 The backend creates its local SQLite historian database automatically under `backend/storage/` when the API starts.
@@ -177,11 +176,17 @@ The Weibull formulation is used for the recoater drive motor to represent fatigu
 
 ![Weibull prediction function](docs/weibull.jpeg)
 
-### Conclusion
+### Prototype scope
 
-The current prototype provides a technically coherent foundation for modeling subsystem degradation through prediction functions that are traceable, deterministic, and aligned with the physical behavior of each component. This makes the digital twin not only capable of estimating health evolution, but also of explaining why degradation occurs and how risk builds over time.
+The implementation combines deterministic component models, synthetic histories, a simulation API, and dashboard/agent interfaces. The repository provides scenarios and tests for these software contracts. It does not establish predictive accuracy on production HP Metal Jet telemetry or validated maintenance schedules.
 
-Its main value, however, is operational. By turning component-specific degradation signals into understandable forecasts, the system helps move from passive monitoring to earlier and better-informed maintenance decisions. In that sense, the project is valuable not only as a modeling exercise, but as a decision-support layer that can help operators understand what is degrading, why it matters, and when intervention should begin to be planned.
+## Development limitations
+
+- `backend/requirements.txt` pins the backend runtime dependencies. `pytest` is a separate development tool.
+- The frontend intentionally disables and ignores `package-lock.json`; exact transitive dependency recreation is not guaranteed.
+- Vite historically serves `3d-models/` through `publicDir`. All nine external GLBs are excluded for unresolved authorship/license. The 3D view requires separately supplied authorized local assets and can be incomplete without them; no redesign was implemented.
+- Ollama-backed features require a running local service and the configured model; the agent panel also supports the documented mock provider.
+- No source-code license is included. [DATA_ASSETS.md](DATA_ASSETS.md) distinguishes synthetic fixtures, authored illustrations and excluded third-party material.
 
 ## Future Improvements
 

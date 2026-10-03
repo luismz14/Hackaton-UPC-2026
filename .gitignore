@@ -225,3 +225,24 @@ __marimo__/
 # Runtime databases
 *.sqlite
 *.sqlite-*
+
+# Local environment overrides and SQLite historian state
+.env.*
+!.env.example
+backend/storage/*.sqlite
+backend/storage/*.sqlite-*
+
+# Local historical inputs/assets excluded under the publication provenance policy.
+/3d-models/Axial Thermal Fuse Horizontal.glb
+/3d-models/Blade.glb
+/3d-models/Heating_Element.glb
+/3d-models/Nozzle_Plate.glb
+/3d-models/Stepper Motor.glb
+/3d-models/brusher.glb
+/3d-models/isolatingPanel.glb
+/3d-models/linear_guide.glb
+/3d-models/temperature_sensor.glb
+/docs/hackathon.md
+/docs/stage-1.md
+/docs/stage-2.md
+/docs/stage-3.md
